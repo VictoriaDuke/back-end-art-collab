@@ -1,4 +1,4 @@
-# Inspiration Board: Back-end Layer
+# Art Collab: Back-end Layer
 
 This scaffold includes the following:
 
