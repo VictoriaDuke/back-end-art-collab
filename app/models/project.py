@@ -1,3 +1,4 @@
+from sqlalchemy import JSON
 from app import db
 # from app.models.collaborator import collaborators
 
@@ -26,6 +27,9 @@ class Project(db.Model):
     # need to make date format consistant? i.e. month-day-year
     accepting_collaborators = db.Column(db.Boolean, nullable = False)
     # change above attribute?
+
+    # add contribution_amount later
+    # contribution_amount  = db.Column(db.String, nullable = True)
     
     # -----------------------------------------------
     # Above are my searchable tags. Add as needed.
@@ -35,7 +39,6 @@ class Project(db.Model):
     owner_user = db.relationship("User", back_populates="owned_projects")
     collaborator_users = db.relationship("User", secondary=collaborators)
 
-    
     def to_dict(self):
         return({
             "project_id": self.project_id,
@@ -47,9 +50,8 @@ class Project(db.Model):
             "end_date": self.end_date,
             "accepting_collaborators": self.accepting_collaborators,
             "user_id":self.user_id,
-            "owner_user": self.owner_user,
+            "owner_user": self.owner_user.to_dict_owner(),
             "collaborator_users": self.collaborator_users
-
         })
 
 

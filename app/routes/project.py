@@ -32,6 +32,8 @@ def get_projects():
     for project in projects:
         projects_response.append(project.to_dict())
 
+    # response = jsonify(projects_response)
+    # response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify(projects_response), 200
 
 # GET /projects/<project_id>

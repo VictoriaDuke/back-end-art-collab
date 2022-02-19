@@ -37,7 +37,7 @@ class User(db.Model):
         return response_body
 
     # may not need
-    def to_dict_collaborators(self):
+    def to_dict_owner(self):
         response_body = {
             "user_id": self.user_id,
             "name": self.name,
